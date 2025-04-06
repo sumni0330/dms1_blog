@@ -8,6 +8,7 @@ allow_math: true
 
 # This is 1A
 Learning the For Loop
+
 I came from RMIT Vietnam, and I had a professor there who I became quite close with. I recently revisited their personal site and reviewed the concept of the for loop, something they had taught me before.
 Using that professor’s website as a reference helped me refresh my understanding.
 📌 Basic for loop structure
@@ -276,150 +277,379 @@ When I first saw Le Duchamp, I was honestly just filled with wonder—How was th
 I'm still a beginner, but I hope that one day I can create something like that too. Thanks so much for reading! 😊
 
 
-## This is A2
+## This is 1B
 
-*This is italic.*[^1]
+## 💬 Conversation with Classmates about Rafaël Rozendaal’s *Le Duchamp*
 
-[^1]: This is a footnote, *which can also be italic*.
+This time, I had a chat with my classmates Changjo and Wonjun about the artwork *[Le Duchamp](https://www.leduchamp.com)* by Rafaël Rozendaal. Like me, they don’t really know how to code, but we freely shared our impressions just by looking at the piece.
 
-**This is bold.**
+### 🗣️ What Changjo said:
+**How does this work move internally?**  
+> “It’s so cool how the wheel follows the mouse and even the shadow moves with it. It kind of feels like you’re spinning a real wheel with your hand. Maybe it’s just programmed to follow the mouse.”
 
-Hyperlinks can be written like this: `[text](https://URL)`
+**What would I need to learn to recreate this?**  
+> “Probably how to draw things like the wheel and its shadow first. Then, maybe figure out how to make them follow the mouse.”
 
-You can find a markdown cheat-sheet [here](https://www.markdownguide.org/cheat-sheet/).
+**How should I learn it?**  
+> “I searched for stuff like ‘p5.js follow mouse’ on YouTube. At first it was confusing, but copying the videos helped a lot. I really like the channel *The Coding Train* — it’s super beginner-friendly! These days I also watch a Korean channel called *Brain Building*. It explains p5.js in Korean and it’s super kind and detailed. You should totally check it out!”
 
-## Codeblocks
+---
 
-Like this:
+### 🗣️ What Wonjun said:
+**How does this work move?**  
+> “The wheel spins really slowly, and the shadow follows along—it’s kinda mesmerizing. It doesn’t seem random. It looks like it's moving in a regular pattern, which is really fascinating.”
+
+**What would I need to learn to recreate this?**  
+> “I think learning how to make things move smoothly is key. And also how to make the shadow follow along.”
+
+**How should I learn it?**  
+> “I once watched a p5.js video where a rainbow moved slowly. That’s how I learned about something called `frameCount`. It changes over time and makes animations happen. If you try following along like that, you’ll start to get the hang of it. I also like the *1MinuteCoding* channel. The videos are short and explain basic stuff really well—including p5.js!”
+
+---
+
+### 📘 What I need to learn:
+- Practice drawing shapes like the wheel and its shadow  
+- Learn how to make graphics respond to mouse movement  
+- Make movements smooth and gradual using time or numbers (e.g., `frameCount`)
+
+---
+
+### 📚 Useful Resources:
+- *The Coding Train* (YouTube, English but very visual and clear)  
+- *Brain Building* (YouTube, Korean, friendly explanations of p5.js)  
+- *1MinuteCoding* (YouTube, short and clear Korean videos for beginners)  
+- The [p5.js official site](https://p5js.org) (lots of code examples)  
+- Search terms on YouTube: “p5.js follow mouse,” “p5.js animation,” “p5.js move drawing”
+
+---
+
+
+
+🧪 *Following the Wheel Style of "Le Duchamp"*
+
+After seeing the smooth, rotating black-and-white wheels on the [Le Duchamp](https://www.leduchamp.com) website and wondering, "Can I make something like this?" I decided to give it a try. Since I was just starting to learn coding and knew nothing, I asked ChatGPT for help step by step, very slowly. Below is a record of what I didn’t know, how ChatGPT helped me, and what I learned through it.
+
+
+
+At first, I showed ChatGPT the wheel image and simply said, “I want to make this.” Naturally, I thought it would just provide the code immediately, but ChatGPT took me through the basics one by one.
+
+ChatGPT explained that to draw a picture, you first need a canvas, like a piece of paper, and in p5.js, you can create this canvas with `createCanvas()`. For example, `createCanvas(600, 600)` would create a 600x600 canvas.
+
+I actually knew this part, but I didn’t fully understand why `createCanvas()` needs to be inside the `setup()` function. Then ChatGPT explained that the `setup()` function is run only once when the program starts, so the canvas should be created there, and the `draw()` function is where you continuously draw on the canvas.
+
+So, I wrote the code like this:
+
 
 ```js
-function setup () {
-    createCanvas (640, 360)
-}
-
-function draw () {
-    background (`turquoise`)
-    // etc.
+function setup() {
+  createCanvas(600, 600);
 }
 ```
-... can be written like this:
 
 
-````markdown
+And since drawing shapes should be done inside the `draw()` function, I wrote:
+
 ```js
-function setup () {
-    createCanvas (640, 360)
-}
-
-function draw () {
-    background (`turquoise`)
-    // etc.
+function draw() {
+  background(255);
+  ellipse(300, 300, 300, 300);
 }
 ```
-````
 
-The `js` at the top ^ gives the codeblock javascript syntax highlighting.  Replace it with `html` for HTML syntax highlighting, etc.
+With this basic structure, when I ran the code, a perfect circle appeared right in the center of the screen! That’s when I realized, “Ah, I can start drawing the wheel here.”
+
+I didn’t know the formula for `ellipse`, so I asked ChatGPT, and it explained:
+
+`ellipse(x, y, w, h);`
+- `x`: x-coordinate of the center of the circle
+- `y`: y-coordinate of the center of the circle
+- `w`: width (horizontal length)
+- `h`: height (vertical length)
+
+So, `ellipse(300, 300, 300, 300);` can be interpreted as:
+
+“Draw a circle with a width of 300 and a height of 300 at the position x=300, y=300 on the screen.”  
+Since the width and height are the same, it creates a circle. If they were different, it would create an ellipse.
+
+I realized that it's not enough to just know `createCanvas()`, but understanding the roles of `setup()` and `draw()` is essential for structuring the code properly. I also learned that using `background()` inside `draw()` is necessary to clear the previous frame and draw a new one. As I adjusted the shape's position, I saw that changing the center coordinates moved the shape, and changing the size values made the shape bigger or smaller, which helped me slowly understand how things worked.
+
+(Additionally, ChatGPT showed me how to apply this: `ellipse(mouseX, mouseY, 100, 100)` → This makes the circle follow the mouse. This also goes inside `draw()`.)
 
 
-## Maths
-... which can be written inline, like this: $\{ x, y, z \} \in \N$
 
-... or block, like this:
+At first, I drew a single circle, but manually inputting numbers like `ellipse(300, 300, ...)` was really inconvenient. Especially, I wanted to perfectly align the wheel with the center of the screen, but it was cumbersome to constantly remember and calculate the width and height. So, I asked ChatGPT if there was an easier way.
 
-$$ x^2 + y^2 = z^2 $$
+ChatGPT explained that instead of manually inputting numbers like (300, 300), you can shift the coordinate system to be based on the center of the screen using `translate(width / 2, height / 2)`. This makes (0, 0) the center of the canvas, so whenever you want to draw something centered, you can just input (0, 0), which is much easier.
 
-Visit [ $\KaTeX$ ](https://katex.org/docs/supported#fractions-and-binomials) for more information about writing maths.
+After hearing this, I added `translate()` inside the `draw()` function:
 
-## Embedded video
+```js
+function draw() {
+  background(255);
+  translate(width / 2, height / 2);
+  ellipse(0, 0, 300, 300);
+}
+```
 
-<iframe id="coding_train_video" src="https://www.youtube.com/embed/rI_y2GAlQFM?si=RDgjkpunxk1mQzMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+After making this change, the circle was now perfectly positioned at the center of the screen just by drawing it at (0, 0). Also, since I could now calculate left/right as negative/positive values and up/down the same way, it became much more intuitive and easier.
 
-<script type="module">
+### What does `translate(width / 2, height / 2);` mean?
+In p5.js, the default coordinate system has (0, 0) at the top-left of the screen, and the numbers increase as you move towards the bottom-right.  
+For example:
+- `width` is the horizontal length of the canvas
+- `height` is the vertical length of the canvas
 
-    console.log (`hello world! 🚀`)
+So, `translate(width / 2, height / 2);` moves the origin of the coordinate system to the center of the screen.  
+In simple terms, it means, “From now on, I’m changing the reference point for drawing shapes to the center of the screen.” Initially, I was manually calculating the coordinates, but after using `translate()`, the coordinates became much simpler. I realized how convenient it is to have (0, 0) as the center.
 
-    const iframe  = document.getElementById (`coding_train_video`)
-    iframe.width  = iframe.parentNode.scrollWidth
-    iframe.height = iframe.width * 9 / 16
+### Why change the coordinate system?
+The reason this is important is that it makes tasks like rotation, symmetry, and center alignment much easier.  
+Let’s compare the two approaches:
 
-</script>
+1. **Without changing the coordinate system:**
+```js
+ellipse(width / 2, height / 2, 300, 300);
+```
+→ You have to manually calculate and input the center.
 
-## Embedded p5 online editor sketch
+2. **After shifting the coordinate system:**
+```js
+translate(width / 2, height / 2);
+ellipse(0, 0, 300, 300);
+```
+→ Since the origin is now at the center, you just input (0, 0).
 
-<iframe id="falling_falling" src="https://editor.p5js.org/capogreco/full/Fkg05m7aA"></iframe>
+👉 The second method is much simpler and more intuitive.  
+Later, when using `rotate()` to rotate shapes, the center of rotation will naturally be the middle of the screen, because the origin is already there.
 
-<script type="module">
+In the general coordinate system, it feels like you’re drawing with a sticky note in the top-left corner of your desk, but using `translate()` is like moving the sticky note to the center of your desk and drawing from there.
 
-    const iframe  = document.getElementById (`falling_falling`)
-    iframe.width  = iframe.parentNode.scrollWidth
-    iframe.height = iframe.width * 9 / 16 + 42
+✨ **What I learned from using it:**
+At first, I thought, “Why is this so complicated?” But after making things like a rotating wheel, I realized that shifting the coordinate system is essential for rotating or aligning shapes around their center.
 
-</script>
+---
 
-## Canvas API
+Now, moving on to rotating the wheel!
 
-<canvas id="canvas_example"></canvas>
+I didn’t want just a stationary circle, I wanted to implement "rotation" like in *Le Duchamp*.
 
-<script type="module">
-    const cnv = document.getElementById (`canvas_example`)
-    cnv.width = cnv.parentNode.scrollWidth
-    cnv.height = cnv.width * 9 / 16
+ChatGPT told me that there's a function called `rotate()`. `rotate()` is the function in p5.js that rotates shapes.  
+But to rotate something, you need to tell it *how much* to rotate, right?  
+This value is called the `rotation` variable.
 
-    const ctx = cnv.getContext (`2d`)
-    const pos = {
-        x: -100,
-        y: cnv.height / 2 - 50
-    }
-    
-    function draw_frame () {
-        ctx.fillStyle = `turquoise`
-        ctx.fillRect (0, 0, cnv.width, cnv.height)
 
-        ctx.fillStyle = `deeppink`
-        ctx.fillRect (pos.x, pos.y, 100, 100)
 
-        pos.x += 2
+```js
+let rotation = 0;
 
-        if (pos.x > cnv.width) {
-            pos.x = -100
-        }
+function draw() {
+  background(255);
+  translate(width / 2, height / 2);
+  
+  ellipse(0, 0, 300, 300);
+  rotation += 0.01;
+}
 
-        requestAnimationFrame (draw_frame)
-    }
+rotate(PI / 4); // Rotate 45 degrees
+```
 
-    draw_frame ()
-</script>
+But if we just rotate with a fixed number like this, the shape will only rotate once and stop.  
+So, we need to create a variable called `rotation` and update its value slightly in each frame so the rotation continues.
 
-## Canvas API + p5.js
+So, what does `rotation += 0.01;` mean?
 
+This is code that gradually increases the rotation angle.
+
+- `rotation` is a variable that holds the angle (in radians).
+- `+= 0.01` means "increase the rotation value by 0.01 each frame."
+
+As a result:
+`rotate(rotation);` will take the increasingly larger value and make the shape rotate continuously.
+
+Here’s the example code again:
+
+```js
+let rotation = 0;
+
+function draw() {
+  background(255);
+  translate(width / 2, height / 2);
+  rotate(rotation);
+  ellipse(0, 0, 300, 300);
+  rotation += 0.01;
+}
+```
+
+**What I learned at this stage:**  
+I understood the concept that `rotate()` rotates the shape, and that using operations like `+=` allows the value to accumulate over time, creating an animation.
+
+
+**Drawing the Spokes**
+
+There were several spokes in the wheel, so how do you draw them?
+
+At first, I thought, “Maybe I can just use `line()` multiple times,” but that seemed inefficient, and I’d have to manually calculate the exact position for each one. So, I asked ChatGPT for help.
+
+ChatGPT suggested that since the spokes are evenly spaced like in a bicycle wheel, it would be better to divide the angles evenly and draw the lines. 
+
+First, decide how many spokes you want (`numSpokes`), then divide 360 degrees (or 2π radians) by that number. Use `cos()` and `sin()` to calculate the coordinates of the outer points for each angle, and then draw a line from the center to each point.
+
+When I heard that, I thought, “Ah, this is just like finding the points on a circle that are a certain distance (the radius) from the center!”
+
+Here’s the first code I wrote:
+
+```js
+const numSpokes = 28;
+for (let i = 0; i < numSpokes; i++) {
+  let angle = (i / numSpokes) * TWO_PI;
+  let x = cos(angle) * 150;
+  let y = sin(angle) * 150;
+  line(0, 0, x, y);
+}
+```
+
+This part was really hard for me. It felt like math. But ChatGPT explained that "`cos` is for horizontal direction, `sin` is for vertical direction," and when I thought of it like a clock, I finally understood.
+
+- `const numSpokes = 28;`  
+This declares that I want 28 spokes. It means I’m dividing one circle into 28 equal parts.
+
+- `for (let i = 0; i < numSpokes; i++) { ... }`  
+This means that `i` will go from 0 to 27, so the loop runs 28 times, drawing 28 spokes.
+
+- `let angle = (i / numSpokes) * TWO_PI;`  
+`TWO_PI` means 360 degrees or 2π radians.  
+This line divides the circle into `numSpokes` parts and calculates the angle for the `i`-th spoke. For example:  
+  - When `i = 0`, the angle is 0.  
+  - When `i = 14`, the angle is half a circle (π).  
+  - When `i = 27`, the angle is almost 360 degrees (close to 2π).
+
+- `let x = cos(angle) * 150;`  
+- `let y = sin(angle) * 150;`  
+These lines use trigonometry to calculate the position of the point at the specified angle.  
+Since the radius is 150, it calculates the coordinates of the point 150 units away from the center of the wheel, at the specified angle.  
+  - `cos(angle)` gives the horizontal position  
+  - `sin(angle)` gives the vertical position  
+In other words, this is the formula for finding the point that is a distance of 150 from the center in the direction of the given angle.
+
+- `line(0, 0, x, y);`  
+This draws a line from the center (0, 0) to the point `(x, y)` that we just calculated.
+
+Visually, this means:
+- The lines spread out in directions like 0°, 12°, 24°... all the way to 360°.
+- Using `cos()` and `sin()` to find the end points, and then drawing lines from the center to those points.
+- The spokes fan out from the center, just like on a wheel.
+
+**What I learned at this stage:**  
+I learned how to divide a circle into 360 degrees, how to convert angles into numbers, and how to use `cos` and `sin` to calculate directions. This felt like connecting math with coding.
+
+
+**Wheel Center**
+
+The center of the wheel felt too empty, so I wanted to add a point of focus.
+
+```js
+fill(0);
+ellipse(0, 0, 15, 15);
+fill(255);
+ellipse(0, 0, 5, 5);
+```
+
+---
+
+### Step 6: How to draw the fixed bar?
+
+How do you draw the black bar under the wheel? In *Le Duchamp*, the wheel looks like it's fixed to some structure.
+
+When I first asked this, I didn't even know how to differentiate between rotating and fixed elements. At first, I drew the bar along with the wheel, but when the wheel rotated and the bar moved with it, I realized "Something's wrong."
+
+ChatGPT explained that the wheel is the rotating element, and the bar is the fixed element. In p5.js, everything drawn after the `rotate()` function will be rotated, so a fixed element like the bar should be drawn before the `rotate()` function. More precisely, after using `translate()` to move the coordinate system to the center, draw the bar with `line()` before the `rotate()` function. This way, the bar stays fixed and doesn't rotate.
+
+That’s when I realized, "Ah, the order of functions in the code actually changes the behavior of the drawing."
+
+```js
+stroke(0);
+strokeWeight(10);
+line(0, 0, 0, radius * 1.2);
+```
+
+After doing this, finally! The wheel rotated, and the bar stayed fixed, making it look just like a real bicycle wheel.
+
+Whether a shape rotates or stays fixed is determined by whether it’s drawn before or after the `rotate()` function. I understood that the order of the code doesn’t just edit the drawing but directly affects the movement.
+
+---
+
+### ✨ Final Result
+
+Here’s the complete code for the wheel I created by learning step by step:
+
+**Canvas API + p5.js**
+
+```html
 <script src="./scripts/p5.js"></script>
 <canvas id="p5_example"></canvas>
 
 <script>
-    const cnv = document.getElementById ("p5_example")
-    const w = cnv.parentNode.scrollWidth
-    const h = w * 9 / 16
+let rotation = 0;
+let wheelSize = 300;
+let radius = wheelSize / 2;
 
-    function setup () {
-        createCanvas (w, h, P2D, cnv)
-        noStroke ()
-    }
+function setup() {
+  createCanvas(600, 600);
+}
 
-    const pos = {
-        x: -100,
-        y: h / 2 - 50
-    }
+function draw() {
+  background(255);
+  translate(width / 2, height / 2);
 
-    function draw () {
-        background (`turquoise`)
+  // Fixed bar of the wheel
+  stroke(0);
+  strokeWeight(10);
+  line(0, 0, 0, radius * 1.2);
 
-        fill (`deeppink`)
-        square (pos.x, pos.y, 100)
+  push();
+  rotate(rotation);
 
-        pos.x += 2
+  // Wheel outline
+  stroke(0);
+  strokeWeight(5);
+  noFill();
+  ellipse(0, 0, wheelSize, wheelSize);
 
-        if (pos.x > w) {
-            pos.x = -100
-        }
-    }
+  // Spokes of the wheel
+  const numSpokes = 28;
+  strokeWeight(1);
+  for (let i = 0; i < numSpokes; i++) {
+    let angle = (i / numSpokes) * TWO_PI;
+    let x = cos(angle) * radius;
+    let y = sin(angle) * radius;
+    line(0, 0, x, y);
+    strokeWeight(3);
+    point(x, y);
+    strokeWeight(1);
+  }
+
+  // Center hub
+  fill(0);
+  ellipse(0, 0, 15, 15);
+  fill(255);
+  ellipse(0, 0, 5, 5);
+
+  pop();
+
+  // Rotation speed
+  rotation += 0.01;
+}
 </script>
+```
+
+---
+
+### 🎯 Final Thoughts
+
+What I realized through this process is that **even if you don't know coding at all, if you keep asking questions, trying things, and executing them, eventually you'll understand**.
+
+It was just about making a wheel spin, but I learned about coordinate systems, loops, math functions, animation principles, and the importance of code order. While it's not perfect yet, I feel a great sense of pride whenever I see the code working.
+
+
+
+
