@@ -652,4 +652,149 @@ It was just about making a wheel spin, but I learned about coordinate systems, l
 
 
 
+# This is 2A
 
+## 🧸 Experimenting with Cute Creations – Designing Cuteness with p5.js
+
+For this project, I spent some time thinking and planning how to implement **cute visuals, cute sounds, and cute interactions** using p5.js. Initially, I got inspired by Le Duchamp’s rotating wheel artwork and wanted to create a scene where a puppy runs along with the wheel. I considered how to make it “cute” and organized my thoughts step by step.
+
+---
+
+### 🎨 1. Creating Cute Visuals
+
+Cute visuals typically have the following features:
+
+- **Round shapes** (round faces, short limbs)
+- **Pastel colors** (soft, gentle colors)
+- **Small, repetitive movements** (like hopping or gently swaying)
+
+#### 📌 Examples:
+- A small puppy running inside the wheel
+- A bunny character with large eyes following the mouse
+- A jelly creature shaking on a cloud
+
+In p5.js, these can be created using functions like `ellipse()`, `colorMode()`, and `sin()`.
+
+---
+
+### 🎧 2. Creating Cute Sounds
+
+Cute sounds are light and cheerful sounds that make you smile when you hear them. For example:
+
+- A "boing" sound
+- A small "squeak" sound like an animal
+- A bouncing sound of an object hitting the floor
+
+With p5.js, you can use the `p5.sound` library to create sounds like "boing" with an `Oscillator` or short, cute sounds using an `envelope`.
+
+For my project, I found a cute sound from Mixkit, a free sound website. I’ll use this sound:
+
+🔊 **Happy puppy barks** from [mixkit.co/free-sound-effects/dog](https://mixkit.co/free-sound-effects/dog/)
+
+This sound will play every time the puppy runs along with the wheel.
+
+#### 📌 Examples:
+- Play a short "woof!" sound whenever the puppy runs
+- Add a click sound at intervals as the wheel rotates
+- Play the Happy puppy barks sound when clicked
+
+---
+
+### 🐾 3. Creating Cute Interactions
+
+Cute interactions refer to responsive, lifelike behaviors, even with simple actions. For example:
+
+- **When the mouse is dragged, the puppy starts running**
+- **When it stops, the puppy pauses and looks like it's out of breath**
+- **Clicking makes the puppy wag its tail or smile**
+
+To make these reactions, I’ll need to use functions like `mousePressed()`, `mouseDragged()`, and `rotation` variables, along with conditional statements to change movements or expressions.
+
+---
+
+### 📅 AT1 Project Concept – Puppy Running in the Wheel
+
+### 🧠 Basic Idea
+
+I took the idea from Le Duchamp's rotating wheel and wanted to create a structure where **a puppy runs along with the wheel**.
+
+- The wheel keeps rotating,
+- The puppy starts running when the mouse is dragged or when the wheel rotates.
+- When the rotation stops, the puppy also stops and appears to pant.
+- The "Happy puppy barks" sound will play when the puppy runs.
+
+### 🔧 Technical Implementation
+
+- Wheel rotation: `rotate()`, `rotation += 0.01`, adjusting for drag speed
+- Puppy animation: Use `frameCount` and conditional statements to animate the puppy’s movement frame by frame
+- Mouse interaction: Using `mousePressed()`, `mouseDragged()`, and `mouseReleased()`
+- Sound: Play the external sound file with `p5.sound`, and trigger the Happy puppy barks sound on click
+
+---
+
+### Sketch Example I Made
+
+```javascript
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(255);
+  translate(width / 2, height / 2);
+
+  // Wheel outline
+  stroke(0);
+  strokeWeight(5);
+  noFill();
+  ellipse(0, 0, 300);
+
+  // Spokes
+  strokeWeight(1);
+  const numSpokes = 12;
+  for (let i = 0; i < numSpokes; i++) {
+    let angle = (i / numSpokes) * TWO_PI;
+    let x = cos(angle) * 150;
+    let y = sin(angle) * 150;
+    line(0, 0, x, y);
+  }
+
+  // Simple puppy drawing
+  noStroke();
+  fill(255, 200, 200);
+  ellipse(0, 70, 40, 25); // Body
+  fill(0);
+  ellipse(-10, 65, 5); // Eye
+  ellipse(10, 65, 5); // Eye
+  stroke(0);
+  line(-5, 75, 5, 75); // Mouth
+}
+```
+
+---
+
+### 🎯 Future Plans
+
+- Add frames for the puppy animation to make it run with the wheel's rotation
+- Make the puppy wag its tail when it runs, and pant when it stops
+- Play a short laughing sound or **Happy puppy barks** when clicked
+- Add the ability to actually drag and rotate the wheel
+
+---
+### 📚 Alternative References
+The Nature of Code – Daniel Shiffman’s Book – Deep dive into simulation and generative systems, a great resource for creating interactive art and animations.
+Creative Coding – Creative Coding YouTube Channel – Offers tutorials on generative art, interactive animations, and p5.js-based projects.
+p5.js Web Editor Documentation – p5.js Web Editor – A platform for writing and testing p5.js code directly in the browser, useful for experimenting with sketches and sounds.
+p5.js Sound Library – p5.js Sound Documentation – Detailed guide on how to integrate sound into your p5.js projects, including functions for oscillators, effects, and sound files.
+Mixkit – Free Sound Effects Library – Mixkit Sound Effects – A great resource for free sound effects to use in interactive projects.
+
+---
+
+## 🧸 Conclusion
+
+Through this project, I realized that it's possible to express cute elements through code. It wasn’t just about drawing shapes, but creating a "little world" full of emotions and reactions.
+
+Especially, making the puppy react inside the rotating wheel was so much fun, and it sparked a desire to create even more interactive elements in the future. 🐶💨
+
+
+# This is 2B
