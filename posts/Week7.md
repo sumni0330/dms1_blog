@@ -1,7 +1,7 @@
 ---
-title: Week5
+title: Week7
 published_at: 2025-11-04
-snippet: An example of a blog post.
+snippet: An week7 of a blog post.
 disable_html_sanitization: true
 allow_math: true
 ---
