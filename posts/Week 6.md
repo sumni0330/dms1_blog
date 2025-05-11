@@ -1,5 +1,5 @@
 ---
-title: And another one!!
+title: Week6
 published_at: 2025-11-04
 snippet: An example of a blog post.
 disable_html_sanitization: true
