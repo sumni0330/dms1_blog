@@ -7,8 +7,8 @@ export default function Home() {
       style={{
         padding: "2rem",
         textAlign: "center",
-        background: "#FFF8E7", // 1. 배경색 아이보리
-        minHeight: "100vh", // 세로 가운데
+        background: "#FFF8E7",
+        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -16,17 +16,17 @@ export default function Home() {
       }}
     >
       <Head>
-        <title>Willby’s Creative Blog</title>
+        <title>Sumin's Creative Blog</title>
       </Head>
       <img
-        src="/static/profile.jpg" // 2. 실제 파일명에 맞게 (profile.png → profile.jpg)
+        src="profile.jpg"
         alt="My profile"
         width="150"
         height="150"
         style={{
           borderRadius: "50%",
           marginBottom: "1rem",
-          border: "4px solid #EFE6D8", // 3. 진한 아이보리 테두리
+          border: "4px solid #EFE6D8",
           objectFit: "cover",
           boxShadow: "0 2px 16px 0 #E0D4BB55",
         }}
@@ -44,11 +44,11 @@ export default function Home() {
         </span>
       </h1>
       <p style={{ fontSize: "1.15rem", marginBottom: "2rem", color: "#333" }}>
-        안녕하세요! 저는 <b>Willby</b>입니다.
+        Hi! I'm <b>Sumin</b>.
         <br />
-        창의적인 코딩, 사운드 아트, 생태적 미학을 탐구합니다.
+        I explore creative coding, sound art, and ecological aesthetics.
         <br />
-        실험적인 프로젝트와 과제 과정을 공유합니다.
+        and share project about these thing in here!
       </p>
       <a
         href="/blog"
@@ -73,7 +73,7 @@ export default function Home() {
           (e.target as HTMLAnchorElement).style.boxShadow = "0 2px 8px 0 #eee";
         }}
       >
-        블로그 보러가기
+        Dig in
       </a>
     </div>
   );
