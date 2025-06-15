@@ -1,7 +1,7 @@
 ---
 title: Week10
-published_at: 2025-11-04
-snippet: An week10 of a blog post.
+published_at: 2025-10-06
+snippet: Week 10 of a blog post.
 disable_html_sanitization: true
 allow_math: true
 ---
